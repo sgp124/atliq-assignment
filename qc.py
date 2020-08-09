@@ -24,7 +24,6 @@ def map():
         where vst.sales_type = 'Device'
     '''
     df = pd.read_sql(query,con=db.engine)
-    print(df)
     df.to_sql('mappings',db.engine,if_exists = 'replace',index=False)
     
     query_imei = ''' 
@@ -50,7 +49,6 @@ def map():
     '''
     df_imei = pd.read_sql(query_imei,con=db.engine)
     df_imei = df_imei[~df_imei['imei'].isin(df['imei'])]
-    print(df_imei)
     df_imei.to_sql('mappings',db.engine,if_exists = 'append',index=False)
 
     query_phone = ''' 
@@ -79,4 +77,5 @@ def map():
     df_phone.to_sql('mappings',db.engine,if_exists = 'append',index=False)
 
 if __name__ == "__main__":
+    print("QC Process Started")
     map()
