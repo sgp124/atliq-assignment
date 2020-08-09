@@ -1,4 +1,5 @@
 *.xlsx
+__pycache__
 
 # Vscode specific files should be ignored
 .vscode/*
