@@ -1,1 +1,4 @@
 *.xlsx
+
+# Vscode specific files should be ignored
+.vscode/*
