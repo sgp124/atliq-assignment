@@ -24,10 +24,25 @@ def upgrade():
         sa.Column('cost', sa.String(20)),
         sa.Column('imei', sa.Numeric),
         sa.Column('phone', sa.Numeric),
+        sa.Column('sales_type',sa.Numeric)
+    )
+    op.create_table(
+        'vendor_sales_types',
+        sa.Column('code',sa.Numeric, primary_key=True),
+        sa.Column('sales_types',sa.String(20))
+    )
+    op.create_table(
+        'store_master',
+        sa.Column('code',sa.Numeric, primary_key=True),
+        sa.Column('store',sa.String(20)),
+        sa.Column('city',sa.String(20)),
+        sa.Column('state',sa.String(20))
     )
     pass
 
 
 def downgrade():
     op.drop_table('vendor_transactions')
+    op.drop_table('vendor_sales_types')
+    op.drop_table('store_master')
     pass
