@@ -28,9 +28,9 @@ def upgrade():
         sa.Column('trans_type',sa.String(20)),
         sa.Column('state',sa.String(20))
     )
-    pass
+    
 
 
 def downgrade():
     op.drop_table('company_transcation')
-    pass
+    

@@ -38,11 +38,9 @@ def upgrade():
         sa.Column('city',sa.String(20)),
         sa.Column('state',sa.String(20))
     )
-    pass
 
 
 def downgrade():
     op.drop_table('vendor_transactions')
     op.drop_table('vendor_sales_types')
     op.drop_table('store_master')
-    pass
