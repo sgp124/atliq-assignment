@@ -22,8 +22,8 @@ def upgrade():
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('date', sa.DateTime),
         sa.Column('cost', sa.String(20)),
-        sa.Column('imei', sa.Numeric),
-        sa.Column('phone', sa.Numeric),
+        sa.Column('imei', sa.String(20)),
+        sa.Column('phone', sa.String(20)),
         sa.Column('sales_type',sa.Numeric)
     )
     op.create_table(

@@ -21,10 +21,10 @@ def upgrade():
         'company_transcation',
         sa.Column('store',sa.String(20)),
         sa.Column('date',sa.DateTime),
-        sa.Column('trans_id',sa.Numeric,primary_key=True),
-        sa.Column('coustmer_id',sa.Numeric),
-        sa.Column('imei', sa.Numeric),
-        sa.Column('phone', sa.Numeric),
+        sa.Column('trans_id',sa.String(20),primary_key=True),
+        sa.Column('coustmer_id',sa.String(20)),
+        sa.Column('imei', sa.String(20)),
+        sa.Column('phone', sa.String(20)),
         sa.Column('trans_type',sa.String(20)),
         sa.Column('state',sa.String(20))
     )
