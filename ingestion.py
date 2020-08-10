@@ -7,6 +7,8 @@ file_extention = ".xlsx"
 def ingest_vendor_transaction():
 	df = pd.read_excel(data_directory+"Vendor Transactions"+file_extention)
 	df.columns = ['date','cost','imei','phone','sales_type']
+	df['cost'] = df['cost'].str.replace('Rs.', '')
+	df['cost'] = df['cost'].str.replace(' ', '')
 	df.to_sql('vendor_transactions',db.engine,if_exists = 'replace',index_label='id')
 
 
