@@ -76,6 +76,31 @@ def map():
     df_phone = df_phone[~df_phone['phone'].isin(df['phone'])]
     df_phone.to_sql('mappings',db.engine,if_exists = 'append',index=False)
 
+def qc2():
+    query2 = ''' 
+        select 
+            mt.id,
+            mt.date,
+            mt.cost,
+            mt.imei,
+            mt.phone,
+            mt.sales_type,
+            mt.trans_id,
+            mt.coustmer_id,
+            mt.store,
+            mt.trans_type,
+            sm.state
+        from mappings mt
+        join store_master sm
+        on mt.store = sm.code
+        where mt.state <> sm.state
+            and mt.cost>25000
+            and mt.trans_type = 'Loan'
+    '''
+    df = pd.read_sql(query2,con=db.engine)
+    df.to_sql('risk_table',db.engine,if_exists = 'replace',index=False)
+
 if __name__ == "__main__":
     print("QC Process Started")
     map()
+    qc2()
